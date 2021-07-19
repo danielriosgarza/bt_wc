@@ -405,7 +405,7 @@ class Culture:
         
         
         
-        dsdt -= self.dilution * s
+        dsdt -= self.dilution * (self.feeding_c-s)
         
         if self.metab_deg is not None:
             dsdt-=self.metab_deg * s
