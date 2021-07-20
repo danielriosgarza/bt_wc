@@ -74,44 +74,56 @@ metabolome = ['Glucose', 'Pyruvate', 'Lactate', 'Succinate', 'Acetate']
 
 stl.sidebar.write('### Parameters')
 
-x_0 = stl.sidebar.slider('Initial bacterial concentration (OD)', min_value = 0.0, max_value = 1.0, value = float(biomass_exp[0]), step=0.001, format='%.4f')
+x_0_exp = biomass_exp[0]
+x_0 = stl.sidebar.slider('Initial bacterial concentration (OD)', min_value = 0.0, max_value = 1.0, value = float(x_0_exp), step=0.001, format='%.4f')
+
+
 
 stl.sidebar.write('*-----------------------------------------*\n\n\n')
 stl.sidebar.write('Glucose')
 
-glucose_s0 = stl.sidebar.slider('Initial glucose concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(glucose_exp[0]), step=0.25, format='%.2f')
 
-glucose_feed = stl.sidebar.slider('Glucose feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(glucose_exp[0]), step=0.25, format='%.2f')
+glucose_s0_exp = glucose_exp[0]
+glucose_s0 = stl.sidebar.slider('Initial glucose concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(glucose_s0_exp), step=0.25, format='%.2f')
+
+
+
+glucose_feed = stl.sidebar.slider('Glucose feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(glucose_s0_exp), step=0.25, format='%.2f')
 
 
 stl.sidebar.write('*-----------------------------------------*\n\n\n')
 stl.sidebar.write('Pyruvate')
 
-pyruvate_s0 = stl.sidebar.slider('Initial pyruvate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(pyruvate_exp[0]), step=0.25, format='%.2f')
+pyruvate_s0_exp = pyruvate_exp[0]
+pyruvate_s0 = stl.sidebar.slider('Initial pyruvate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(pyruvate_s0_exp), step=0.25, format='%.2f')
 
-pyruvate_feed = stl.sidebar.slider('Pyruvate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(pyruvate_exp[0]), step=0.25, format='%.2f')
+
+pyruvate_feed = stl.sidebar.slider('Pyruvate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(pyruvate_s0_exp), step=0.25, format='%.2f')
 
 stl.sidebar.write('*-----------------------------------------*\n\n\n')
 stl.sidebar.write('Lactate')
 
-lactate_s0 = stl.sidebar.slider('Initial lactate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(lactate_exp[0]), step=0.25, format='%.2f')
+lactate_s0_exp = lactate_exp[0]
+lactate_s0 = stl.sidebar.slider('Initial lactate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(lactate_s0_exp), step=0.25, format='%.2f')
 
-lactate_feed = stl.sidebar.slider('Lactate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(lactate_exp[0]), step=0.25, format='%.2f')
+lactate_feed = stl.sidebar.slider('Lactate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(lactate_s0_exp), step=0.25, format='%.2f')
 
 
 stl.sidebar.write('*-----------------------------------------*\n\n\n')
 stl.sidebar.write('Succinate')
 
-succinate_s0 = stl.sidebar.slider('Initial succinate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(succinate_exp[0]), step=0.25, format='%.2f')
+succinate_s0_exp = succinate_exp[0]
+succinate_s0 = stl.sidebar.slider('Initial succinate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(succinate_s0_exp), step=0.25, format='%.2f')
 
-succinate_feed = stl.sidebar.slider('Succinate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(succinate_exp[0]), step=0.25, format='%.2f')
+succinate_feed = stl.sidebar.slider('Succinate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(succinate_s0_exp), step=0.25, format='%.2f')
 
 stl.sidebar.write('*-----------------------------------------*\n\n\n')
 stl.sidebar.write('Acetate')
 
-acetate_s0 = stl.sidebar.slider('Initial acetate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(acetate_exp[0]), step=0.25, format='%.2f')
+acetate_s0_exp = acetate_exp[0]
+acetate_s0 = stl.sidebar.slider('Initial acetate concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(acetate_s0_exp), step=0.25, format='%.2f')
 
-acetate_feed = stl.sidebar.slider('Acetate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(acetate_exp[0]), step=0.25, format='%.2f')
+acetate_feed = stl.sidebar.slider('Acetate feed concentration (g/L)', min_value = 0.0, max_value = 25.0, value = float(acetate_s0_exp), step=0.25, format='%.2f')
 
 
 
@@ -126,6 +138,7 @@ tend = stl.sidebar.slider('Culture time (h)', min_value=5.0, max_value = 1000.0,
 
 
 metabolome_c = [glucose_s0, pyruvate_s0, lactate_s0, succinate_s0, acetate_s0]
+metabolome_c_exp = [glucose_s0_exp, pyruvate_s0_exp, lactate_s0_exp, succinate_s0_exp, acetate_s0_exp]
 metabolome_f = [glucose_feed, pyruvate_feed, lactate_feed, succinate_feed, acetate_feed]
 dilution = dparam
 
@@ -137,9 +150,12 @@ metabolome_deg = [fitted_data[15], fitted_data[16], fitted_data[17], fitted_data
 
 BT = Strain(name=name, x_0 = x_0, q_0 = lphase_param, mu=mu_max, dr=dr, metab = metabs_BT, metab_v = metabs_BT_v, metab_k = metabs_BT_k, growth_model = growth_BT, feeding = feeding_BT)
 
-
+BT_exp = Strain(name=name, x_0 = x_0_exp, q_0 = lphase_param, mu=mu_max, dr=dr, metab = metabs_BT, metab_v = metabs_BT_v, metab_k = metabs_BT_k, growth_model = growth_BT, feeding = feeding_BT)
 
 culture = Culture(strains = [BT], metabolome = metabolome, metabolome_c =metabolome_c, metab_deg = metabolome_deg, dilution=dilution, feed_c = metabolome_f)
+
+culture_exp = Culture(strains = [BT_exp], metabolome = metabolome, metabolome_c =metabolome_c_exp, metab_deg = metabolome_deg)
+
 
 
 culture.simulate(0, tend, nsteps=10000)
@@ -148,4 +164,11 @@ stl.markdown("<h1 style='text-align: center; color: red;'>BT (WC media)</h1>", u
 stl.line_chart(culture.community_dyn)
 stl.line_chart(culture.environment_dyn)
 
+culture_exp.simulate(time_exp[0], time_exp[-1])
+fig = culture_exp.community_dyn.plot()
+fig.plot(time_exp, biomass_exp, 'o', label='OD600')
+fig.legend()
 
+stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
+
+stl.plotly_chart(fig)

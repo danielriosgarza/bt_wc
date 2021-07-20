@@ -125,7 +125,7 @@ class Culture:
     
     
     '''
-    def __init__(self, strains, metabolome, metabolome_c, feed_c = None, metab_deg = None, dilution = 0):
+    def __init__(self, strains, metabolome, metabolome_c, feed_c = None, metab_deg = None, dilution = None):
         
         
         self.strain_obj = self.__take_strains(strains)
@@ -146,10 +146,7 @@ class Culture:
         self.feeding_c = np.array(feed_c)
         self.metab_deg = np.array(metab_deg)
         
-        self.dilution = 0
-        
-        if dilution is not None:
-            self.dilution = dilution
+        self.dilution = dilution
     
     def __take_strains(self, strains):
         '''
@@ -391,7 +388,7 @@ class Culture:
         growth = self.growthRates(s,q)
         
         #derivative for bacterial growth
-        dxdt = np.array([sum(i) for i in growth])*x - self.dilution*x - self.drs*x
+        dxdt = np.array([sum(i) for i in growth])*x - self.drs*x
         
         #derivative for the change in substrate concentration
         dsdt =  np.zeros(self.nmets)
@@ -404,8 +401,9 @@ class Culture:
         #dilution
         
         
-        
-        dsdt += self.dilution * (self.feeding_c-s)
+        if self.dilution is not None:
+            dxdt -= self.dilution*x
+            dsdt += self.dilution * (self.feeding_c-s)
         
         if self.metab_deg is not None:
             dsdt-=self.metab_deg * s
