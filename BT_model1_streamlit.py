@@ -171,8 +171,8 @@ stl.line_chart(culture.environment_dyn)
 culture_exp.simulate(time_exp[0], time_exp[-1])
 
 fig1, ax = plt.subplots()
-ax.plot(time_exp, biomass_exp, 'o', legend='OD600')
-ax.plot(culture_exp.system_time, culture_exp.community_dyn['BT'].values, '-', legend='BT Model')
+ax.plot(time_exp, biomass_exp, 'o', label='OD600')
+ax.plot(culture_exp.system_time, culture_exp.community_dyn['BT'].values, '-', label='BT Model')
 ax.legend()
 
 stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
