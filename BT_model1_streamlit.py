@@ -167,11 +167,14 @@ stl.markdown("<h1 style='text-align: center; color: red;'>BT (WC media)</h1>", u
 stl.line_chart(culture.community_dyn)
 stl.line_chart(culture.environment_dyn)
 
+
 culture_exp.simulate(time_exp[0], time_exp[-1])
-plt.plot(time_exp, biomass_exp, 'o')
+
+fig, ax = plt.subplots()
+ax.plot(time_exp, biomass_exp, 'o')
 
 
 
 stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
 
-stl.pyplot()
+stl.pyplot(fig)
