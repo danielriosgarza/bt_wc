@@ -6,7 +6,7 @@ Created on Mon Jul 19 10:57:56 2021
 """
 
 import streamlit as stl
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
 from MonodCom_simulator import *
 
@@ -168,11 +168,10 @@ stl.line_chart(culture.community_dyn)
 stl.line_chart(culture.environment_dyn)
 
 culture_exp.simulate(time_exp[0], time_exp[-1])
-fig = go.Figure()
+plt.plot(time_exp, biomass_exp, 'o')
 
-fig.add_trace(go.Scatter(x=culture_exp.system_time, y=culture_exp.community_dyn['BT']))
 
 
 stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
 
-stl.plotly_chart(fig)
+stl.pyplot()
