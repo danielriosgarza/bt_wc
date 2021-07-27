@@ -196,9 +196,10 @@ def exp():
     ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Acetate'], label = 'acetateModel', color = 'b')
     ax2.legend()
     
-    stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
+    
     
     stl.pyplot(fig1)
     stl.pyplot(fig2)
-    show()
+   
+stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
 d1=exp()
