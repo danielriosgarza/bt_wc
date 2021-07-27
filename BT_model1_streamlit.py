@@ -176,6 +176,8 @@ def exp():
 
     return culture_exp
 
+stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
+
 culture_exp = exp()
 fig1, ax1 = plt.subplots()
 ax1.plot(time_exp, biomass_exp, 'o', label='OD600', color='b')
@@ -205,4 +207,3 @@ stl.pyplot(fig1)
 stl.pyplot(fig2)
 #show()
    
-stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
