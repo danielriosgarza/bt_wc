@@ -161,7 +161,7 @@ culture_exp = Culture(strains = [BT_exp], metabolome = metabolome, metabolome_c 
 
 
 
-culture.simulate(0, tend, nsteps=10000)
+culture.simulate(0, tend, nsteps=1000)
 
 stl.markdown("<h1 style='text-align: center; color: red;'>BT (WC media)</h1>", unsafe_allow_html=True)
 stl.line_chart(culture.community_dyn)
