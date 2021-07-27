@@ -173,33 +173,36 @@ def exp():
     
     
     culture_exp.simulate(time_exp[0], time_exp[-1])
-    
-    fig1, ax1 = plt.subplots()
-    ax1.plot(time_exp, biomass_exp, 'o', label='OD600', color='b')
-    ax1.plot(culture_exp.system_time, culture_exp.community_dyn['BT'].values, '-', label='BT Model', color = 'b')
-    ax1.legend()
-    
-    fig2, ax2 = plt.subplots()
-    ax2.plot(time_exp, glucose_exp, 'o', label = 'glucose (HPLC)', color='orange')
-    ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Glucose'], label = 'glucoseModel', color = 'orange')
-    
-    ax2.plot(time_exp, pyruvate_exp, 'o', label = 'pyruvate (HPLC)', color='lightblue')
-    ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Pyruvate'], label = 'pyruvateModel', color = 'lightblue')
-    
-    ax2.plot(time_exp, lactate_exp, 'o', label = 'lactate (HPLC)', color='red')
-    ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Lactate'], label = 'lactateModel', color = 'red')
-    
-    ax2.plot(time_exp, succinate_exp, 'o', label = 'succinate (HPLC)', color='green')
-    ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Succinate'], label = 'succinateModel', color = 'green')
-    
-    ax2.plot(time_exp, acetate_exp, 'o', label = 'acetate (HPLC)', color='b')
-    ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Acetate'], label = 'acetateModel', color = 'b')
-    ax2.legend()
-    
-    
-    
-    stl.pyplot(fig1)
-    stl.pyplot(fig2)
+
+    return culture_exp
+
+culture_exp = exp()
+fig1, ax1 = plt.subplots()
+ax1.plot(time_exp, biomass_exp, 'o', label='OD600', color='b')
+ax1.plot(culture_exp.system_time, culture_exp.community_dyn['BT'].values, '-', label='BT Model', color = 'b')
+ax1.legend()
+
+fig2, ax2 = plt.subplots()
+ax2.plot(time_exp, glucose_exp, 'o', label = 'glucose (HPLC)', color='orange')
+ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Glucose'], label = 'glucoseModel', color = 'orange')
+
+ax2.plot(time_exp, pyruvate_exp, 'o', label = 'pyruvate (HPLC)', color='lightblue')
+ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Pyruvate'], label = 'pyruvateModel', color = 'lightblue')
+
+ax2.plot(time_exp, lactate_exp, 'o', label = 'lactate (HPLC)', color='red')
+ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Lactate'], label = 'lactateModel', color = 'red')
+
+ax2.plot(time_exp, succinate_exp, 'o', label = 'succinate (HPLC)', color='green')
+ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Succinate'], label = 'succinateModel', color = 'green')
+
+ax2.plot(time_exp, acetate_exp, 'o', label = 'acetate (HPLC)', color='b')
+ax2.plot(culture_exp.system_time, culture_exp.environment_dyn['Acetate'], label = 'acetateModel', color = 'b')
+ax2.legend()
+
+
+
+stl.pyplot(fig1)
+stl.pyplot(fig2)
+#show()
    
 stl.markdown("<h1 style='text-align: center; color: red;'>Parameter Fit</h1>", unsafe_allow_html=True)
-d1=exp()
